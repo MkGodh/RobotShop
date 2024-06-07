@@ -5,9 +5,8 @@ using namespace std;
 
 int main() {
 
-
     int N;
-    int M;
+    int K;
     int index;
     int RobotNum;
     cout << "Please input N: ";
@@ -28,16 +27,26 @@ int main() {
     cout << "}" << "\n";
 
 
-    cout << "Please input M: ";
-    cin >> M;
-    for (int i = 0; i < M; i++) {
-        cout << "Please input robot index: " << "\n";
-        cin >> index;
-        if (index > vec.size() || index < 0) {
-            cout << "There is no such index" << "\n";
-        }
-        vec.erase(vec.begin() + index);
+    cout << "Please input K: ";
+    cin >> K;
 
+    for (int i = 0; i < K; i++) {
+        int answer = 0;
+        cout << "Please input one to add or two to erase: " << "\n";
+        cin >> answer;
+        if (answer == 1) {
+            cout << "Please input robot number: ";
+            cin >> RobotNum;
+            vec.push_back(RobotNum);
+        }
+        if (answer == 2) {
+            cout << "Please input robot index: ";
+            cin >> index;
+            vec.erase(vec.begin() + index);
+        }
+        else {
+            cout << "There is no such answer!";
+        }
         cout << "Left on display {";
         for (int i = 0; i < vec.size(); i++) {
             cout << vec[i];
@@ -45,7 +54,6 @@ int main() {
                 cout << ",";
             }
         }
-        cout << "}";
+        cout << "}" << "\n";
     }
-
 }
